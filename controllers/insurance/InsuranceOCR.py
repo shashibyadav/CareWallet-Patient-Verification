@@ -3,7 +3,6 @@ import json
 from services.textract.Textract import textract_client
 from utils.utils import rename_file
 from services.s3Client.S3Client import s3_client
-from config.config import config_obj
 
 class InsuranceOCR:
 
@@ -24,7 +23,6 @@ class InsuranceOCR:
         json_key = rename_file(json_key, '.JPEG', '.json')
 
         s3_client.put_object(
-            Bucket=config_obj.get_bucket_name(),
             Key=json_key,
             Body=json.dumps(extracted_text),
             ContentType="application/json"
