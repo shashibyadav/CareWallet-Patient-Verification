@@ -74,5 +74,5 @@ class Verification:
         )
         similarity = None
         for faceMatch in response["FaceMatches"]:
-            similarity = faceMatch["similarity"]
+            similarity = faceMatch["Similarity"]
         return similarity
