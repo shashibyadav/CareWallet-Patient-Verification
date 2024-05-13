@@ -31,3 +31,5 @@ class InsuranceOCR:
         )
 
         return True
+
+insurance_obj = InsuranceOCR()

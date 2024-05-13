@@ -4,6 +4,7 @@ from entities.Event import Event
 from controllers.verification.Verification import Verification
 from entities.TempSession import temp_session_entity
 from utils.AppWideConstants import TempSessionStatus
+from controllers.insurance.InsuranceOCR import insurance_obj
 
 
 def lambda_handler(event, context):
@@ -50,6 +51,8 @@ def lambda_handler(event, context):
         print(f'You are not who you say you are; only {similarity}% similar.')
 
     ### Insurance Verification from now
+
+    insurance_obj.ocr_extract_info()
 
     if event_obj.get_verified():
         temp_session_entity.update_dynamo_item(
