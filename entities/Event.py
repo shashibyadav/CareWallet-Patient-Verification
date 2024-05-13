@@ -2,21 +2,21 @@
 class Event:
 
     def __init__(self, event):
-        self._user_photo_path = event['userPhoto']
-        self._id_front_path = event['govIDFront']
-        self._id_back_path = event['govIDBack']
-        self._insurance_front_path = event['insuranceFront']
-        self._insurance_back_path = event['insuranceBack']
-        self._temp_session_id = event['id']
-        self._insurance_name = event['insuranceName']
-        self._policy_holder_name = event['policyHolderName']
-        self._member_id = event['memberID']
-        self._member_dob = event['memberDOB']
-        self._insurance_type = event['insuranceType']
-        self._group_number = event['groupNumber']
-        self._effective_date = event['effectiveDate']
-        self._rel_to_policy_holder = event['relToPolicyHolder']
-        self._status = event['status']
+        self._user_photo_path = event['userPhoto'] if 'userPhoto' in event else None
+        self._id_front_path = event['govIDFront'] if 'govIDFront' in event else None
+        self._id_back_path = event['govIDBack'] if 'govIDBack' in event else None
+        self._insurance_front_path = event['insuranceFront'] if 'insuranceFront' in event else None
+        self._insurance_back_path = event['insuranceBack'] if 'insuranceBack' in event else None
+        self._temp_session_id = event['id'] if 'id' in event else None
+        self._insurance_name = event['insuranceName'] if 'insuranceName' in event else None
+        self._policy_holder_name = event['policyHolderName'] if 'policyHolderName' in event else None
+        self._member_id = event['memberID'] if 'memberID' in event else None
+        self._member_dob = event['memberDOB'] if 'memberDOB' in event else None
+        self._insurance_type = event['insuranceType'] if 'insuranceType' in event else None
+        self._group_number = event['groupNumber'] if 'groupNumber' in event else None
+        self._effective_date = event['effectiveDate'] if 'effectiveDate' in event else None
+        self._rel_to_policy_holder = event['relToPolicyHolder'] if 'relToPolicyHolder' in event else None
+        self._status = event['status'] if 'status' in event else None
         self._verified = False
         self._face_cropped = False
 
