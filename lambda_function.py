@@ -52,7 +52,7 @@ def lambda_handler(event, context):
 
     ### Insurance Verification from now
 
-    insurance_obj.ocr_extract_info()
+    insurance_obj.ocr_extract_info(event_obj)
 
     if event_obj.get_verified():
         temp_session_entity.update_dynamo_item(
