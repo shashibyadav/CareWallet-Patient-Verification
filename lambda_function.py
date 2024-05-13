@@ -55,15 +55,16 @@ def lambda_handler(event, context):
     insurance_obj.ocr_extract_info()
 
     if event_obj.get_verified():
+        insurance_obj.extract_fields()
+        update_exp, exp_attr_name, exp_attr_value = insurance_obj.generate_query()
+        update_exp += f", #status = :status"
+        exp_attr_name[f"#status"] = "status"
+        exp_attr_value[f":status"] = TempSessionStatus.SUCCESS
         temp_session_entity.update_dynamo_item(
             event=event_obj,
-            update_exp=f"SET #status = :status",
-            exp_attr_name={
-                "#status": "status"
-            },
-            exp_attr_value={
-                ":status": TempSessionStatus.SUCCESS
-            }
+            update_exp=update_exp,
+            exp_attr_name=exp_attr_name,
+            exp_attr_value=exp_attr_value
         )
 
         return {
