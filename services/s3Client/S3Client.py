@@ -7,7 +7,7 @@ class S3Client:
         self._s3_client = boto3.client('s3')
         self._s3_connection = boto3.resource('s3')
 
-    def put_object(self, Body=None, Key="", ContentType=None):
+    def put_object(self, Body=None, Key="", ContentType=""):
         self._s3_client.put_object(
             Body=Body,
             Bucket=config_obj.get_bucket_name(),
