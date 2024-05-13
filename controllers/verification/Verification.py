@@ -1,6 +1,5 @@
 import io
 from PIL import Image
-from config.config import config_obj
 from services.s3Client.S3Client import s3_client
 from services.rekoginition.Rekognition import rekognition_obj
 from utils.utils import rename_file
@@ -60,7 +59,6 @@ class Verification:
 
         s3_client.put_object(
             Body=buffered.getvalue(),
-            Bucket=config_obj.get_bucket_name(),
             Key=new_fname,
         )
 
