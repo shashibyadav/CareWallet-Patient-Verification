@@ -68,12 +68,12 @@ class InsuranceOCR:
         self._temp_info = defaultdict(str)
         insurance_front_path = self._event.get_insurance_front_path()
         insurance_back_path = self._event.get_insurance_back_path()
-        # extracted_text = textract_client.get_analyze_id(
-        #     file_name=insurance_front_path
-        # )
-        extracted_text = textract_client.get_multi_analyze_id(
-            file_names=[insurance_front_path, insurance_back_path]
+        extracted_text = textract_client.get_analyze_id(
+            file_name=insurance_front_path
         )
+        # extracted_text = textract_client.get_multi_analyze_id(
+        #     file_names=[insurance_front_path, insurance_back_path]
+        # )
 
         self._extracted_info = extracted_text if extracted_text is not None else {}
 
